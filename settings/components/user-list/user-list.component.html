@@ -1,0 +1,65 @@
+<table mat-table [dataSource]="dataSourceMembers" matSort class="mat-elevation-z0 yucca-table"
+  [hidden]="!filteredMembers">
+  <!-- Name Column -->
+  <ng-container matColumnDef="realName">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef> Name
+      <app-sort-header-direction columnName="realName" [sortState]="sortState"></app-sort-header-direction>
+    </th>
+    <td *matCellDef="let element" mat-cell [ngClass]="{ deactivated: !element.permission.activated }">
+      <div class="table-image-wrapper">
+        <img alt="profile image" src="{{element.profileImage}}">
+      </div>
+      <div class="table-image-description">
+        {{element.realName}}
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Account Column -->
+  <ng-container matColumnDef="account">
+    <th mat-header-cell *matHeaderCellDef> Account type </th>
+    <td mat-cell *matCellDef="let element" [ngClass]="{ deactivated: !element.permission.activated }">
+      <div *ngIf="element.permission.activated"> {{element.permission.role | permission}} </div>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="access">
+    <th mat-header-cell *matHeaderCellDef> Access</th>
+    <td mat-cell *matCellDef="let element" [ngClass]="{ deactivated: !element.permission.activated }">
+      <div *ngIf="element.permission.activated">Active</div>
+      <div *ngIf="!element.permission.activated">Deactivated</div>
+    </td>
+  </ng-container>
+
+  <!-- action Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td *matCellDef="let element" mat-cell [ngClass]="{ deactivated: !element.permission.activated }">
+      <button [matMenuTriggerFor]="menu" class="button list-button" mat-button>
+        <i class="fas fa-ellipsis-h fa-lg"></i>
+      </button>
+      <mat-menu #menu="matMenu" [class]="'yucca-menu'" xPosition="before">
+        <button (click)="onChangePermission(element)" mat-menu-item *ngIf="element.permission.activated">
+          <span>Change permission</span>
+        </button>
+        <button (click)="onActivateAccess(element)" mat-menu-item *ngIf="!element.permission.activated">
+          <span>Activate acceess</span>
+        </button>
+        <button (click)="onDeactivateAccess(element)" mat-menu-item *ngIf="element.permission.activated">
+          <span>Deactivate access</span>
+        </button>
+        <button (click)="onDelete(element)" mat-menu-item *ngIf="!element.permission.activated">
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<div *ngIf="filteredMembers && filteredMembers.length > pageSize && paginator" class="paginator-container">
+  <app-paginator [paginator]="paginator"></app-paginator>
+</div>
+<mat-spinner *ngIf="!filteredMembers" [diameter]="48" class="yucca-spinner yucca-page-spinner"></mat-spinner>
+<mat-paginator [hidden]="!filteredMembers" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="pageSize"
+  style="display: none">
+</mat-paginator>

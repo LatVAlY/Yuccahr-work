@@ -1,0 +1,67 @@
+<mat-toolbar class="page-header">
+  <span class="page-header-title">Account</span>
+</mat-toolbar>
+<div class="content-wrapper">
+  <div class="card card-11">
+    <div class="modal-title">
+      Slack workspace
+    </div>
+    <div class="modal-text">
+      <p>YuccaHR is connected to your Slack workspace <b>{{workspace.teamName}}</b>. </p>
+    </div>
+    <div class="modal-title">
+      Email address
+    </div>
+    <div class="modal-text">
+      <p>Your email address is <b>{{user.email}}</b>.</p>
+    </div>
+    <div class="modal-title">
+      Language
+    </div>
+    <div class="modal-text">
+      <p>Choose the language you'd like to use. This affects notifications and reports, this does not affect
+        templates and content.</p>
+      <div class="settings-input-wrapper">
+        <app-language-picker
+          [disabled]="true"
+          [preselection]="preselectedLanguage"
+          (selection)="selectedLanguage($event)">
+        </app-language-picker>
+      </div>
+    </div>
+    <div class="modal-title">
+      Time zone
+    </div>
+    <div class="modal-text">
+      <p>YuccaHR uses your time zone to send notifications and reminders.</p>
+      <div class="settings-input-wrapper">
+        <app-timezone-picker
+          [preselection]="preselectedTmz"
+          (selection)="selectedTimezone($event)">
+        </app-timezone-picker>
+      </div>
+    </div>
+    <button (click)="save()"
+            class="button"
+            *ngIf="!isLoading && (selectedLg || selectedTmz)"
+            class="button button-primary"
+            mat-button>
+      Save
+    </button>
+    <button
+            class="button"
+            *ngIf="!selectedLg && !selectedTmz"
+            class="button button-gray"
+            disabled
+            mat-button>
+      Save
+</button>
+    <button *ngIf="isLoading"
+            class="button button-loading"
+            mat-button>Save
+      <span class="spinner-container">
+        <mat-spinner [diameter]="16" class="yucca-spinner"></mat-spinner>
+      </span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="modal-title">
+  Delete {{ members.realName }}
+</div>
+<div class="card-content">
+  Are you sure you want to <b>delete</b> {{ members.realName }} from your YuccaHR workspace? This will not have an
+  impact on the Slack workspace member itself.
+</div>
+<div class="actions">
+  <button (click)="Delete()" *ngIf="!isLoading" class="button button-primary" mat-button>
+    Delete
+  </button>
+  <button *ngIf="isLoading" class="button button-loading" mat-button>
+    Deleting
+    <span class="spinner-container">
+      <mat-spinner [diameter]="16" class="yucca-spinner"></mat-spinner>
+    </span>
+  </button>
+  <button (click)="cancel()" class="button button-gray" mat-button>Cancel</button>
+</div>

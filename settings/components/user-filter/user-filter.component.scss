@@ -1,0 +1,12 @@
+.search-field .search-field-input {
+  border: 0;
+  position: absolute;
+  bottom: 50%;
+  left: 40px;
+  width: calc(100% - 40px);
+  transform: translate(0, 50%);
+}
+
+input{
+  background-color: var(--color-gray-FA);
+}

@@ -1,0 +1,30 @@
+<div class="dropdown-input-container"
+     [ngClass]="{focus: isFocused()}">
+  <input #input 
+         [ngClass]="{ disabled: disabled }"
+         [disabled]="disabled"
+         class="dropdown-input gray"
+         placeholder="Select language..."
+         [matAutocomplete]="auto"
+         readonly
+         (click)="togglePanel(autocompleteTrigger)"
+         (keyup.arrowDown)="openPanel(autocompleteTrigger, selectedIndex, autocomplete)"
+         [value]="selectedLanguage.language">
+  <button #button
+          [ngClass]="{ disabled: disabled }"
+          tabindex="-1"
+          (click)="input.focus(); togglePanel(autocompleteTrigger)"
+          class="open-dropdown-button gray">
+    <i class="fas fa-chevron-down fa-xs"></i>
+  </button>
+</div>
+<mat-autocomplete #auto="matAutocomplete"
+                  [displayWith]="displayLanguages"
+                  [class]="'yucca-autocomplete gray'"
+                  (optionSelected)="selected($event)">
+  <mat-option *ngFor="let language of languages"
+              [value]="language"
+              [ngClass]="{'selected': language.id === selectedLanguage.id}">
+    <span>{{language.language}}</span>
+  </mat-option>
+</mat-autocomplete>

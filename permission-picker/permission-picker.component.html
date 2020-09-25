@@ -1,0 +1,22 @@
+<div class="dropdown-input-container"
+[ngClass]="{focus: isFocused()}">
+    <input #input class="dropdown-input gray" placeholder="Select permission..."
+           [matAutocomplete]="auto"
+           readonly
+           (click)="togglePanel()"
+           (keyup.arrowDown)="openPanel()"
+           [(ngModel)]="preSelectedPermission">
+    <button #button
+            (click)="input.focus(); togglePanel()"
+            class="open-dropdown-button gray"
+            tabindex="-1">
+        <i class="fas fa-chevron-down fa-xs"></i>
+    </button>
+</div>
+<mat-autocomplete #auto="matAutocomplete" [class]="'yucca-autocomplete gray'"
+    (optionSelected)="permissionSelected($event.option.value)">
+    <mat-option *ngFor="let permission of permissions" [value]="permission"
+        [ngClass]="{selected: permission === preSelectedPermission}">
+        <span>{{permission}}</span>
+    </mat-option>
+</mat-autocomplete>

@@ -1,0 +1,15 @@
+<div *ngIf="show" class="snackbar-wrap" @state>
+    <div class="message" *ngIf="action">
+        <span class="snackbar-text">
+            {{name || role}} {{message}}
+        </span>
+    </div>
+    <!-- <div class="action" [hidden]="!action">
+        <button (click)="actionBtn($event)">{{action}}</button>
+    </div> -->
+    <div class="message2" *ngIf="!action">
+        <span class="snackbar-text">
+            {{message}} {{name}}<span *ngIf="role">'s</span> {{role}}
+        </span>
+    </div>
+</div>

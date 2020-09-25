@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="652px" viewBox="0 0 375 652" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path + Path 2 Mask</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="375" height="652"></rect>
+    </defs>
+    <g id="⚙️-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Section/Become-part-of-us-Mobile">
+            <g id="Section/Become-part-of-us-Copy" transform="translate(0.000000, -67.000000)">
+                <g id="Path-+-Path-2-Mask" transform="translate(0.000000, 67.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Mask"></g>
+                    <path d="M186,641.575788 C186,589.088304 246.373481,606.599555 287.867733,544.631262 C329.361984,482.662968 327.60062,428.696726 384.233875,454.68343 C421.989378,472.007899 452.91142,524.825407 477,613.135953 C395.640691,712.164714 329.296727,747.161066 277.968108,718.125009 C200.97518,674.570924 186,694.063273 186,641.575788 Z" id="Path" fill-opacity="0.1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                    <path d="M197.259842,-22.9374362 C183.182216,6.70430002 171.918884,48.4663512 246.748436,55.595298 C321.577988,62.7242448 405.682084,11.4521748 417.673641,-13.7971506 C429.665197,-39.046476 343.197443,-67 304.972108,-67 C266.746773,-67 211.337468,-52.5791724 197.259842,-22.9374362 Z" id="Path-2" fill-opacity="0.1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

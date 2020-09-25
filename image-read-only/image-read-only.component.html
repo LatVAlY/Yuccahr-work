@@ -1,0 +1,24 @@
+<div class="message-display-block-container">
+    <div class="drag-layer" *ngIf="block.withText"></div>
+    <div class="image header" *ngIf="!block.withText">
+        <span class="file-name">{{ block.name }}</span>
+        <button mat-icon-button class="toggle-button" (click)="toggleImage()">
+            <span class="material-icons" *ngIf="!unfolded">
+                keyboard_arrow_down
+            </span>
+            <span class="material-icons" *ngIf="unfolded">
+                keyboard_arrow_up
+            </span>
+        </button>
+    </div>
+    <div *ngIf="block.withText" class="block-content-container">
+        <div class="text-content">
+            <ckeditor class="message-editor-text full-height hide-toolbar" [editor]="editor"
+                [(ngModel)]="block.text">
+            </ckeditor>
+        </div>
+        <img class="with-text" src="{{ block.src }}" alt="Image">
+    </div>
+    <img (click)="openImg(block.src)" *ngIf="!block.withText && unfolded" src="{{ block.src }}" alt="Image"
+        [ngStyle]="{'margin-top': !block.withText ? '0' : '10px solid transparent'}">
+</div>

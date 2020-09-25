@@ -1,0 +1,25 @@
+<div class="modal-title">
+  Deactivate access for {{ member.realName }}
+</div>
+<div class="card-content">
+  Are you sure you want <b>deactivate</b> access for {{  member.realName }} to access your YuccaHR workspace?
+</div>
+<div class="actions">
+  <button (click)="deactivate()"
+          *ngIf="!isLoading"
+          class="button button-primary"
+          mat-button>
+    Deactivate
+ </button>
+  <button *ngIf="isLoading"
+          class="button button-loading"
+          mat-button>
+    Deactivating
+    <span class="spinner-container">
+      <mat-spinner [diameter]="16" class="yucca-spinner"></mat-spinner>
+    </span>
+  </button>
+  <button (click)="cancel()" class="button button-gray" mat-button>Cancel</button>
+</div>
+
+

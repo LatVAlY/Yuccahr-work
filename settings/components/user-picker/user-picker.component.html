@@ -1,0 +1,20 @@
+<div class="dropdown-input-container">
+  <input (click)="togglePanel()"
+         [ngClass]="{invalid: checkValidity}"
+         [matAutocomplete]="auto"
+         class="dropdown-input {{color}}"
+         placeholder="Select a user..."
+         readonly>
+  <button (click)="togglePanel()"
+          class="open-dropdown-button {{color}}">
+    <i class="fas fa-chevron-down fa-xs"></i>
+  </button>
+</div>
+<mat-autocomplete #auto="matAutocomplete" (optionSelected)="select($event.option.value)"
+                  [class]="'yucca-autocomplete ' + color"
+                  [displayWith]="displayMembers">
+  <mat-option *ngFor="let member of members" [value]="member">
+    <span>{{member.realName}}</span>
+  </mat-option>
+</mat-autocomplete>
+

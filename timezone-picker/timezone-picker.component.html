@@ -1,0 +1,27 @@
+<div class="dropdown-input-container"
+     [ngClass]="{focus: isFocused()}">
+  <input #input
+         class="dropdown-input gray "
+         placeholder="Select timezone..."
+         [matAutocomplete]="auto"
+         readonly
+         (click)="togglePanel()"
+         (keyup.arrowDown)="openPanel()"
+         [value]="selectedTimezone.description">
+  <button #button
+          tabindex="-1"
+          (click)="input.focus(); togglePanel()"
+          class="open-dropdown-button gray">
+    <i class="fas fa-chevron-down fa-xs"></i>
+  </button>
+</div>
+<mat-autocomplete #auto="matAutocomplete"
+                  [displayWith]="displayTimezone"
+                  [class]="'yucca-autocomplete gray'"
+                  (optionSelected)="selected($event)">
+  <mat-option *ngFor="let timezone of timezones"
+              [value]="timezone"
+              [ngClass]="{'selected': timezone.id === selectedTimezone.id}">
+    <span>{{timezone.description}}</span>
+  </mat-option>
+</mat-autocomplete>

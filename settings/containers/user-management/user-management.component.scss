@@ -1,0 +1,40 @@
+.button {
+  float: right;
+}
+
+.filter {
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 16px;
+  height: 40px;
+  overflow: visible;
+  background: none;
+}
+
+[mat-button].button-header {
+  display: inline-block;
+  border-radius: 16px !important;
+  padding: 0 16px;
+  height: 36px;
+  width: 112px;
+  margin: 0;
+  font-size: 13px;
+  box-shadow: var(--shadow-large);
+}
+
+.card {
+  margin-bottom: 0;
+  border-radius: 12px;
+  background: white;
+  box-shadow: var(--shadow-large);
+  position: relative;
+  z-index: 1;
+}
+
+.content-wrapper {
+  overflow-y: hidden;
+}
+
+.search-bar-wrapper {
+  width: calc(100% - 16px);
+}

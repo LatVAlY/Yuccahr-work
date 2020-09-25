@@ -1,0 +1,42 @@
+<div class="modal-title">
+ Add user
+</div>
+<div class="input-text-container">
+    <div class="input-label">User<span class="red-asterisk"><i class="fas fa-asterisk"></i></span></div>
+    <app-slack-member-picker (selection)="selectedUsersChange($event)"
+                             [invalid]="checkValidity && !selectedMember"
+                             [members]="members"
+                             color="gray">
+    </app-slack-member-picker>
+    <div class="invalid-input-text" >
+      <span *ngIf="checkValidity && !selectedMember">User is required</span>
+    </div>
+  </div>
+  <div class="input-text-container">
+    <div class="input-label">Permission<span class="red-asterisk"><i class="fas fa-asterisk"></i></span></div>
+    <app-permission-picker-user (selected)="permissionSelected($event)"
+                                [checkValidity]="checkValidity && !selectedPermission">
+    </app-permission-picker-user>
+    <div class="invalid-input-text">
+      <span *ngIf="checkValidity && !selectedPermission">Permission is required</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button (click)="add()"
+            *ngIf="!isLoading"
+            class="button button-primary"
+            mat-button>
+      Add
+    </button>
+    <button *ngIf="isLoading"
+            class="button button-loading"
+            mat-button>
+      Add
+      <span class="spinner-container">
+        <mat-spinner [diameter]="16" class="yucca-spinner"></mat-spinner>
+      </span>
+    </button>
+    <button (click)="closeDial()" class="button button-gray" mat-button>Cancel</button>
+  </div>
+
+

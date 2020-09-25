@@ -1,0 +1,26 @@
+<mat-toolbar class="page-header">
+  <span class="page-header-title">User management</span>
+</mat-toolbar>
+<div class="content-wrapper">
+  <div class="card card-11 table-card">
+    <mat-toolbar class="filter">
+      <div class="search-bar-wrapper">
+        <app-user-filter
+          (filteredMembers)="filteredMember($event)"
+          [filteredMembersList]="filteredMembersList">
+        </app-user-filter>
+      </div>
+      <button class="button" (click)="onAddUser()" class="button-header button-primary" mat-button>Add user</button>
+    </mat-toolbar>
+    <app-user-list
+      [filteredMembers]="filteredMembers"
+      (userActivated)="accessActivated($event)"
+      (userDeactivated)="accessDeactivated($event)"
+      (deleteMember)="delete($event)"
+      (permissionChanged)="permissionChanged($event)"
+      [closeDialog]="closeDialogObservable"
+    >
+    </app-user-list>
+  </div>
+</div>
+
